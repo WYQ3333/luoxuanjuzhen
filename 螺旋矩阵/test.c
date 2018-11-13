@@ -74,7 +74,42 @@ int main()
 			printf("%d ", matrix[i][j]);
 		}
 	}
-	int *array = spiralOrder(*matrix, 3, 4);
+	//int *array = spiralOrder(*matrix, 3, 4);
+	int matrixRowSize = 3;
+	int matrixColSize = 4;
+	int count = 0;
+	int row = matrixRowSize;
+	int col = matrixColSize;
+	int *array = malloc(sizeof(int)*(matrixColSize + matrixRowSize));
+	while (count < (matrixRowSize + matrixColSize))
+	{
+		int i = 0;
+		int j = 0;
+		for (j = matrixColSize - col; j < matrixColSize; j++)
+		{
+			printf("%d ", matrix[0][j]);
+			array[count++];
+		}
+		row--;
+		for (i = matrixRowSize - row; i < matrixRowSize; i++)
+		{
+			printf("%d ", matrix[i][j]);
+			array[count++];
+		}
+		col--;
+		for (j = col - 1; j>0; j--)
+		{
+			printf("%d ", matrix[i][j]);
+			array[count++];
+		}
+		row--;
+		for (i = row - 1; i > 0; i--)
+		{
+			printf("%d ", matrix[i][j]);
+			array[count++];
+		}
+		col--;
+	}
 	while (array != NULL)
 	{
 		printf("%d ", *array);
